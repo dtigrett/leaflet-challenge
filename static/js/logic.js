@@ -4,6 +4,7 @@ d3.json(url, function(data) {
     createFeatures(data.features);
 });
 
+// Function to Determine Color 
 function getColor(d) {
 
     return d < 1 ? 'rgb(255,255,178)' : 
@@ -48,16 +49,17 @@ function createMap(earthquakes) {
         accessToken: API_KEY
     });
 
-    var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
+    var grayscale = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
         maxZoom: 18,
         id: "mapbox.light",
         accessToken: API_KEY
     });
+
  
     var baseMaps = {
         "Outdoors": outdoors,
-        "Light Map": lightmap 
+        "Gray Scale": grayscale 
     };
     
     var overlayMaps = {
